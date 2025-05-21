@@ -1,0 +1,4025 @@
+{
+	"info": {
+		"_postman_id": "260e65b8-af34-4f0e-89eb-861412ac0cf8",
+		"name": "Upgates API",
+		"description": "# 🚀 Úvod\n\nAby vám propojení přes API fungovalo, je zapotřebí překontrolovat, že e-shop na který se napojujete **má zapnutý doplněk** [API](https://doplnky.upgates.cz/detail/api).\n\n# 🤖 První krok\n\nPřejděte do záložky **Variables** a vyplňte\n\n1. **apiUser_Login** - Login uživatele pro API komunikaci\n    \n2. **apiUser_Key** - Klíč uživatele pro API komunikaci\n    \n3. **Project_URL** - URL adresa projektu pro API komunikaci\n    \n\n# 💬 Komunikace\n\n## Odeslání požadavku\n\nTato kolekce obsahuje všechny typy požadavků (POST, GET, PUT a DELETE), které Upgates aktuálně umožňuje. (viz dokumentace [APIARY](https://upgatesapiv2.docs.apiary.io/))\n\n## Zobrazení odpovědi\n\nSledujte sekci Response, které vám API vrací. Pokud se objeví:\n\n- Všechny stavové kódy jsou vypsány v [dokumentaci](https://upgatesapiv2.docs.apiary.io/#introduction/stavove-kody)\n    \n\n---\n\n# ⭐Ověřené doplňky\n\n- Pokud jste vývojář, který vytváří [Ověřený doplněk](https://www.upgates.cz/a/pro-vyvojare-doplnky) není zapotřebí, abyste tento doplněk API, měli aktivován. Ověřený doplněk jej má systémově \"aktivován\". Všechny potřebné informace dostanete z [Instalačního požadavku](https://www.upgates.cz/a/api-dokumentace-aktivace-doplnku)\n    \n    - Ověřený doplněk, není započítáván do [Omezení počtu požadavků](https://upgatesapiv2.docs.apiary.io/#introduction/rate-limiting/omezeni-poctu-pozadavku), ale řídí se pouze [Best Practices](https://www.upgates.cz/a/api-dokumentace-doplnku#doplnek_bestpractices) pro tvorbu ověřeného doplňku.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27218885"
+	},
+	"item": [
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Orders",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"send_emails_yn\": \"0\",\r\n    \"send_sms_yn\": \"0\",\r\n    \"orders\": [\r\n        {\r\n        \"external_order_number\": \"{{orderNumber_External}}\",\r\n        \"language_id\": \"{{languageID_CZ}}\",\r\n        \"prices_with_vat_yn\": \"1\",\r\n        \"status\": \"{{orderStatus_CZ_Received}}\",\r\n        \"paid_date\": \"2025-1-1\",\r\n        \"tracking_code\": \"{{orderNumber}}\",\r\n        \"resolved_yn\": \"0\",\r\n        \"internal_note\": \"Internal API note\",\r\n        \"statistics_yn\": \"1\",\r\n        \"variable_symbol\": \"{{orderVariableSymbol}}\",\r\n        \"creation_time\": \"2025-1-1\",\r\n        \"dimensions\": {\r\n            \"width\": \"50\",\r\n            \"length\": \"50\",\r\n            \"height\": \"50\"\r\n        },\r\n        \"customer\": { \r\n            \"email\": \"{{customerEmail}}\",\r\n            \"phone\": \"777777777\",\r\n            \"firstname_invoice\": \"{{customerName}}\",\r\n            \"surname_invoice\": \"{{customerSurname}}\",\r\n            \"street_invoice\": \"{{customerBillingStreet}}\",\r\n            \"city_invoice\": \"{{customerBillingCity}}\",\r\n            \"state_invoice\": \"{{customerBillingState}}\",\r\n            \"zip_invoice\": \"{{customerBillingZipCode}}\",\r\n            \"country_id_invoice\": \"{{customerBillingCountryID}}\",\r\n            \"postal_yn\": \"1\",\r\n            \"firstname_postal\": \"Eva\",\r\n            \"surname_postal\": \"Nováková\",\r\n            \"street_postal\": \"{{customerPostalStreet}}\",\r\n            \"city_postal\": \"{{customerPostalCity}}\",\r\n            \"state_postal\": \"{{customerPostalState}}\",\r\n            \"zip_postal\": \"{{customerPostalZipCode}}\",\r\n            \"country_id_postal\": \"{{customerPostalCountryID}}\",\r\n            \"company_yn\": \"1\",\r\n            \"company_postal\": \"70200\",\r\n            \"company\": \"{{customerCompanyName}}\",\r\n            \"ico\": \"{{customerCompanyNumber}}\",\r\n            \"dic\": \"{{customerCompanyVatNumber}}\",\r\n            \"vat_payer_yn\": \"{{customerCompanyVatPayer}}\",\r\n            \"pricelist_name\": \"{{pricelistName_CZ}}\",\r\n            \"pricelist_percent\": \"0\",\r\n            \"customer_note\": \"Customer Note\"\r\n            },\r\n        \"products\": [{\r\n            \"code\": \"{{productCode}}\",\r\n            \"code_supplier\": \"Dodavatel\",\r\n            \"ean\": \"123456789\",\r\n            \"title\": \"{{productName}}\",\r\n            \"quantity\": \"1\",\r\n            \"unit\": \"ks\",\r\n            \"price_per_unit\": \"430\",\r\n            \"vat\": \"{{Vat_CZ}}\",\r\n            \"buy_price\": \"500\",\r\n            \"recycling_fee\": \"50\",\r\n            \"weight\": \"4\",\r\n            \"invoice_info\": \"invoice note\",\r\n            \"parameters\": [{\r\n                \"name\": \"{{parametersName_CZ}}\",\r\n                \"value\": \"{{parametersValue_CZ}}\"\r\n                }]\r\n            }],\r\n        \"quantity_discount\": {\r\n            \"amount\": \"10\",\r\n            \"type\": \"price\"\r\n        },\r\n        \"shipment\": {\r\n            \"code\": \"1234\",\r\n            \"name\": \"API Shipment\",\r\n            \"price\": \"150\",\r\n            \"vat\": \"21\"\r\n        },\r\n        \"payment\": {\r\n            \"code\": \"1234\",\r\n            \"name\": \"API Payment\",\r\n            \"price\": \"0\",\r\n            \"vat\": \"21\"\r\n        },\r\n        \"invoice\": {\r\n            \"generate_yn\": \"1\",\r\n            \"expiration_date\": \"2025-2-2\",\r\n            \"date_of_issuance\": \"2025-1-1\",\r\n            \"date_of_vat_revenue_recognition\": \"2025-1-1\"\r\n        },\r\n        \"receipt\": {\r\n            \"generate_yn\": \"1\",\r\n            \"expiration_date\": \"2025-2-2\",\r\n            \"date_of_issuance\": \"2025-1-1\",\r\n            \"date_of_vat_revenue_recognition\": \"2025-1-1\"  \r\n        },\r\n        \"credit_note\": {\r\n            \"generate_yn\": \"1\",\r\n            \"expiration_date\": \"2025-2-2\",\r\n            \"date_of_issuance\": \"2025-1-1\",\r\n            \"date_of_vat_revenue_recognition\": \"2025-1-1\"  \r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/orders",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/orders",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"send_emails_yn\": \"0\",\r\n    \"send_sms_yn\": \"0\",\r\n    \"delete_missing_products_yn\": \"1\",\r\n    \"orders\": [\r\n        {\r\n        \"order_number\": \"{{orderNumber}}\",\r\n        \"external_order_number\": \"123456789\",\r\n        \"status_id\": \"{{orderStatusID_Canceled}}\",\r\n        \"paid_date\": \"2025-1-1\",\r\n        \"tracking_code\": \"{{orderNumber}}\",\r\n        \"resolved_yn\": \"0\",\r\n        \"internal_note\": \"Interní poznámka\",\r\n        \"statistics_yn\": \"1\",\r\n        \"variable_symbol\": \"{{orderVariableSymbol}}\",\r\n        \"dimensions\": {\r\n            \"width\": \"50\",\r\n            \"length\": \"50\",\r\n            \"height\": \"50\"\r\n        },\r\n        \"customer\": {\r\n            \"email\": \"{{customerEmail}}\",\r\n            \"phone\": \"123456789\",\r\n            \"firstname_invoice\": \"{{customerName}}\",\r\n            \"surname_invoice\": \"{{customerSurname}}\",\r\n            \"street_invoice\": \"{{customerBillingStreet}}\",\r\n            \"city_invoice\": \"{{customerBillingCity}}\",\r\n            \"state_invoice\": \"{{customerBillingCity}}\",\r\n            \"zip_invoice\": \"{{customerBillingZipCode}}\",\r\n            \"country_id_invoice\": \"{{countryID_CZ}}\",\r\n            \"postal_yn\": \"1\",\r\n            \"company_postal\": \"{{customerCompanyName}}\",\r\n            \"firstname_postal\": \"Eva\",\r\n            \"surname_postal\": \"Nováková\",\r\n            \"street_postal\": \"{{customerPostalStreet}}\",\r\n            \"city_postal\": \"{{customerPostalCity}}\",\r\n            \"state_postal\": \"{{customerPostalState}}\",\r\n            \"zip_postal\": \"{{customerPostalZipCode}}\",\r\n            \"country_id_postal\": \"{{customerPostalCountryID}}\",\r\n            \"company_yn\": \"1\",\r\n            \"company\": \"{{customerCompanyName}}\",\r\n            \"ico\": \"{{customerCompanyNumber}}\",\r\n            \"dic\": \"{{customerCompanyVatNumber}}\",\r\n            \"vat_payer_yn\": \"{{customerCompanyVatPayer}}\",\r\n            \"pricelist_name\": \"{{pricelistName_CZ}}\",\r\n            \"pricelist_percent\": \"0\",\r\n            \"customer_note\": \"Customer note\"            \r\n        },\r\n        \"products\": [{\r\n            \"code\": \"{{productCode}}\",\r\n            \"code_supplier\": \"Supplier\",\r\n            \"ean\": \"123456789\",\r\n            \"title\": \"{{productName}}\",\r\n            \"quantity\": \"1\",\r\n            \"unit\": \"ks\",\r\n            \"price_per_unit\": \"150\",\r\n            \"buy_price\": \"100\",\r\n            \"weight\": \"20\",\r\n            \"invoice_info\": \"Produtct Invoice info\",\r\n            \"parameters\": [{\r\n                \"name\": \"{{parametersName_CZ}}\",\r\n                \"value\": \"{{parametersValue_CZ}}\"\r\n            }]\r\n        }],\r\n        \"quantity_discount\": {\r\n            \"amount\": \"10\",\r\n            \"type\": \"price\"\r\n        },\r\n        \"shipment\": {\r\n            \"code\": \"1234\",\r\n            \"name\": \"API Shipment\",\r\n            \"price\": \"150\",\r\n            \"vat\": \"21\"\r\n        },\r\n        \"payment\": {\r\n            \"code\": \"1234\",\r\n            \"name\": \"API Payment\",\r\n            \"price\": \"0\",\r\n            \"vat\": \"21\"\r\n        },\r\n        \"invoice\": {\r\n            \"generate_yn\": \"1\",\r\n            \"expiration_date\": \"2025-2-2\",\r\n            \"date_of_issuance\": \"2025-1-1\",\r\n            \"date_of_vat_revenue_recognition\": \"2025-1-1\"\r\n        },\r\n        \"receipt\": {\r\n            \"generate_yn\": \"1\",\r\n            \"expiration_date\": \"2025-2-2\",\r\n            \"date_of_issuance\": \"2025-1-1\",\r\n            \"date_of_vat_revenue_recognition\": \"2025-1-1\"  \r\n        },\r\n        \"credit_note\": {\r\n            \"generate_yn\": \"1\",\r\n            \"expiration_date\": \"2025-2-2\",\r\n            \"date_of_issuance\": \"2025-1-1\",\r\n            \"date_of_vat_revenue_recognition\": \"2025-1-1\"  \r\n        }\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/orders",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/?order_number={{orderNumber}}",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										""
+									],
+									"query": [
+										{
+											"key": "order_number",
+											"value": "{{orderNumber}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order - PDF",
+					"item": [
+						{
+							"name": "Orders - PDF",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/:OrderNumber/pdf",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										":OrderNumber",
+										"pdf"
+									],
+									"variable": [
+										{
+											"key": "OrderNumber",
+											"value": "{{orderNumber}}",
+											"description": "Order Number"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order - History",
+					"item": [
+						{
+							"name": "Orders - history",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": [{\r\n        \"name\": \"record name\",\r\n        \"value\": \"record value\"\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/:OrderNumber/history",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										":OrderNumber",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "OrderNumber",
+											"value": "{{orderNumber}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders - history",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/:OrderNumber/history",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										":OrderNumber",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "OrderNumber",
+											"value": "{{orderNumber}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order - files",
+					"item": [
+						{
+							"name": "Orders - file",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1efdfd98-1121-4d40-82d1-39664913e21c"
+										},
+										{
+											"key": "file_name",
+											"value": "API files",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/:OrderNumber/file",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										":OrderNumber",
+										"file"
+									],
+									"variable": [
+										{
+											"key": "OrderNumber",
+											"value": "{{orderNumber}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders - file link",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"urls\": [\r\n    {\r\n    \"name\": \"Website link\",\r\n    \"url\": \"https://www.upgates.cz\",\r\n    \"code\": \"1234567489\"\r\n  }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/:OrderNumber/urls",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										":OrderNumber",
+										"urls"
+									],
+									"variable": [
+										{
+											"key": "OrderNumber",
+											"value": "{{orderNumber}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders - file",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/orders/:OrderNumber/attachments?ids={{orderFilesID}}",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"orders",
+										":OrderNumber",
+										"attachments"
+									],
+									"query": [
+										{
+											"key": "ids",
+											"value": "{{orderFilesID}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "OrderNumber",
+											"value": "{{orderNumber}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order statuses",
+			"item": [
+				{
+					"name": "Order statuses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\": \"#beff4d\",\r\n    \"descriptions\": [{\r\n        \"language_id\": \"{{languageID_CZ}}\",\r\n        \"name\": \"API Order status 2\"\r\n    }],\r\n    \"mark_resolved_yn\": \"1\",\r\n    \"mark_paid_yn\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/order-statuses",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"order-statuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order statuses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/order-statuses",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"order-statuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order statuses",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"55\",\r\n    \"color\": \"#beff4d\",\r\n    \"descriptions\": [{\r\n        \"language_id\": \"{{languageID_CZ}}\",\r\n        \"name\": \"test 2\"\r\n    }],\r\n    \"mark_resolved_yn\": \"1\",\r\n    \"mark_paid_yn\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/order-statuses",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"order-statuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order statuses",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/order-statuses/:id",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"order-statuses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Invoices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/invoices/?creation_time_from=2023-01-01",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"invoices",
+								""
+							],
+							"query": [
+								{
+									"key": "creation_time_from",
+									"value": "2023-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoices - PDF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/invoices/:InvoiceNumber/pdf",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"invoices",
+								":InvoiceNumber",
+								"pdf"
+							],
+							"variable": [
+								{
+									"key": "InvoiceNumber",
+									"value": "{{orderInvoiceNumber}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"code\": \"{{productCode}}\",\r\n      \"code_supplier\": \"Supplier\",\r\n      \"active_yn\": \"false\",\r\n      \"archived_yn\": \"0\",\r\n      \"ean\": \"EAN123456789\",\r\n      \"descriptions\": [{\r\n          \"language\": \"{{languageID_CZ}}\",\r\n          \"active_yn\": \"1\",\r\n          \"title\": \"{{productName}}\",\r\n          \"short_description\": \"{{productName}}\",\r\n          \"long_description\": \"{{productName}}\",\r\n          \"seo_title\": \"{{productName}}\",\r\n          \"seo_description\": \"{{productName}}\",\r\n          \"seo_url\": \"{{productName}}\"\r\n        }],\r\n      \"stock\": \"17\",\r\n      \"stock_position\": \"Ř10P20\",\r\n      \"limit_orders\": \"sale\",\r\n      \"availability_id\": \"2\",\r\n      \"availability\": \"{{productsAvailability_CZ}}\",\r\n      \"manufacturer_id\": \"3\",\r\n      \"manufacturer\": \"Gingerprint\",\r\n      \"weight\": \"100\",\r\n      \"shipment_group\": \"{{productShipmentGroup}}\",\r\n      \"can_add_to_basket_yn\": \"1\",\r\n      \"adult_yn\": \"0\",\r\n      \"images\": [\r\n        {\r\n            \"url\": \"{{productImageURL}}\",\r\n            \"main_yn\": \"1\",\r\n            \"list_yn\": \"1\",\r\n            \"position\": \"1\"\r\n        },\r\n        {\r\n            \"url\": \"{{productImageURL}}\",\r\n            \"position\": \"2\"\r\n        }\r\n      ],\r\n      \"stocks\": [\r\n        {\r\n            \"stock_id\": \"{{stockID}}\",\r\n            \"code\": \"{{stockCode}}\",\r\n            \"position\": \"Ř10P20\",\r\n            \"quantity\": \"10\"\r\n        }\r\n      ],\r\n      \"categories\": [\r\n        {\r\n            \"category_id\": \"{{categoryID}}\",\r\n            \"code\": \"{{categoryCode}}\",\r\n            \"main_yn\": \"1\",\r\n            \"position\": \"0\"\r\n        }\r\n      ],\r\n      \"prices\": [\r\n        {\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"pricelists\": [\r\n                {\r\n                    \"name\": \"{{pricelistName_CZ}}\",\r\n                    \"price_original\": \"599.99\",\r\n                    \"product_discount\": \"500.30\",\r\n                    \"price_sale\": \"499.25\"\r\n                }\r\n            ],\r\n            \"price_purchase\": \"300.20\",\r\n            \"price_common\": \"350.20\"\r\n        }\r\n      ],\r\n      \"vats\": {\r\n        \"cz\": 21\r\n      },\r\n      \"labels\": [{\r\n        \"name\": {\r\n            \"cz\": \"API Label\"\r\n        },\r\n        \"active_yn\": \"1\",\r\n        \"active_from\": \"2023-1-1\",\r\n        \"active_to\": \"2030-1-1\"\r\n      }],\r\n      \"parameters\": [\r\n        {\r\n            \"id\": \"2\",\r\n            \"descriptions\": [\r\n                {\r\n                    \"language\": \"{{languageID_CZ}}\",\r\n                    \"name\": \"{{parametersName_CZ}}\"\r\n                }\r\n            ],\r\n            \"values\": [\r\n                {\r\n                    \"id\": \"2\",\r\n                    \"descriptions\": [\r\n                        {\r\n                            \"language\": \"{{languageID_CZ}}\",\r\n                            \"value\": \"Emerald\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n      ],\r\n      \"variants\": [\r\n        {\r\n            \"code\": \"{{productCode}}_1\",\r\n            \"code_supplier\": \"Supplier\",\r\n            \"active_yn\": \"1\",\r\n            \"main_yn\": \"1\",\r\n            \"ean\": \"EAN1234567891\",\r\n            \"stock\": \"17\",\r\n            \"stock_position\": \"Ř10P21\",\r\n            \"availability_id\": \"2\",\r\n            \"availability\": \"{{productsAvailability_CZ}}\",\r\n            \"can_add_to_basket_yn\": \"1\",\r\n            \"image\":\r\n                {\r\n                    \"url\": \"{{productImageURL}}\"\r\n                },\r\n            \"stocks\": [\r\n                {\r\n                    \"stock_id\": \"{{stockID}}\",\r\n                    \"code\": \"{{stockCode}}\",\r\n                    \"position\": \"Ř10P20\",\r\n                    \"quantity\": \"10\"\r\n                }\r\n            ],\r\n            \"prices\": [\r\n                {\r\n                    \"language\": \"{{languageID_CZ}}\",\r\n                    \"pricelists\": [\r\n                        {\r\n                            \"name\": \"{{pricelistName_CZ}}\",\r\n                            \"price_original\": \"100.50\",\r\n                            \"product_discount\": \"99.99\",\r\n                            \"price_sale\": \"90.30\"\r\n                        }\r\n                    ],\r\n                    \"price_purchase\": \"80.45\",\r\n                    \"price_common\": \"120.44\"\r\n                }\r\n            ],\r\n            \"labels\": [{\r\n                \"name\": {\r\n                    \"cz\": \"API Label\"\r\n                },\r\n                \"active_yn\": \"1\",\r\n                \"active_from\": \"2023-1-1\",\r\n                \"active_to\": \"2030-1-1\"\r\n            }],\r\n            \"parameters\": [\r\n                {\r\n                    \"id\": \"2\",\r\n                    \"descriptions\": [\r\n                        {\r\n                            \"language\": \"{{languageID_CZ}}\",\r\n                            \"name\": \"{{parametersName_CZ}}\"\r\n                        }\r\n                    ],\r\n                    \"values\": [\r\n                        {\r\n                            \"id\": \"2\",\r\n                            \"descriptions\": [\r\n                                {\r\n                                    \"language\": \"{{languageID_CZ}}\",\r\n                                    \"value\": \"Emerald\"\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/products",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/products",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - simple",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/products/:ProductCode/simple",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"products",
+								":ProductCode",
+								"simple"
+							],
+							"variable": [
+								{
+									"key": "ProductCode",
+									"value": "{{productCode}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n    \"code\": \"{{productCode}}\",\r\n    \"code_supplier\": \"Supplier2\",\r\n    \"active_yn\": \"0\",\r\n    \"ean\": \"EAN123456888\",\r\n    \"descriptions\": [{\r\n        \"language\": \"{{languageID_CZ}}\",\r\n        \"active_yn\": \"1\",\r\n        \"title\": \"{{productName}}\",\r\n        \"short_description\": \"{{productName}}\",\r\n        \"long_description\": \"{{productName}}\",\r\n        \"seo_title\": \"{{productName}}\",\r\n        \"seo_description\": \"{{productName}}\",\r\n        \"seo_url\": \"{{productName}}\"\r\n    }],\r\n    \"stock_increment\": \"+10\",\r\n    \"stock_position\": \"Ř10P20\",\r\n    \"limit_orders\": \"0\",\r\n    \"availability_id\": \"2\",\r\n    \"availability\": \"{{productsAvailability_CZ}}\",\r\n    \"manufacturer_id\": \"3\",\r\n      \"manufacturer\": \"Gingerprint\",\r\n      \"weight\": \"100\",\r\n      \"shipment_group\": \"{{productShipmentGroup}}\",\r\n      \"can_add_to_basket_yn\": \"1\",\r\n      \"adult_yn\": \"0\",\r\n      \"images\": [\r\n        {\r\n            \"url\": \"{{productImageURL_2}}\",\r\n            \"main_yn\": \"1\",\r\n            \"list_yn\": \"1\",\r\n            \"position\": \"1\"\r\n        },\r\n        {\r\n            \"url\": \"{{productImageURL_2}}\",\r\n            \"position\": \"2\"\r\n        }\r\n      ], \r\n      \"stocks\": [\r\n        {\r\n            \"stock_id\": \"{{stockID}}\",\r\n            \"code\": \"{{stockCode}}\",\r\n            \"position\": \"Ř10P20\",\r\n            \"quantity\": \"10\"\r\n        }\r\n      ],            \r\n      \"categories\": [\r\n        {\r\n            \"category_id\": \"{{categoryID}}\",\r\n            \"code\": \"{{categoryCode}}\",\r\n            \"main_yn\": \"1\",\r\n            \"position\": \"0\"\r\n        }\r\n      ],\r\n      \"prices\": [\r\n        {\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"pricelists\": [\r\n                {\r\n                    \"name\": \"{{pricelistName_CZ}}\",\r\n                    \"price_original\": \"999.99\",\r\n                    \"product_discount\": \"900.30\",\r\n                    \"price_sale\": \"899.25\"\r\n                }\r\n            ],\r\n            \"price_purchase\": \"500.20\",\r\n            \"price_common\": \"550.20\"\r\n        }\r\n      ],\r\n      \"vats\": {\r\n        \"cz\": 21\r\n      },\r\n      \"labels\": [{\r\n        \"name\": {\r\n            \"cz\": \"API Label\"\r\n        },\r\n        \"active_yn\": \"1\",\r\n        \"active_from\": \"2023-1-1\",\r\n        \"active_to\": \"2030-1-1\"\r\n      }],\r\n      \"parameters\": [\r\n        {\r\n            \"id\": \"2\",\r\n            \"descriptions\": [\r\n                {\r\n                    \"language\": \"{{languageID_CZ}}\",\r\n                    \"name\": \"{{parametersName_CZ}}\"\r\n                }\r\n            ],\r\n            \"values\": [\r\n                {\r\n                    \"id\": \"2\",\r\n                    \"descriptions\": [\r\n                        {\r\n                            \"language\": \"{{languageID_CZ}}\",\r\n                            \"value\": \"Emerald\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n      ],\r\n      \"variants\": [\r\n        {\r\n            \"code\": \"{{productCode}}_1\",\r\n            \"code_supplier\": \"Supplier\",\r\n            \"active_yn\": \"1\",\r\n            \"main_yn\": \"1\",\r\n            \"ean\": \"EAN1234567891\",\r\n            \"stock\": \"17\",\r\n            \"stock_position\": \"Ř10P21\",\r\n            \"availability_id\": \"2\",\r\n            \"availability\": \"{{productsAvailability_CZ}}\",\r\n            \"can_add_to_basket_yn\": \"1\",\r\n            \"image\":\r\n                {\r\n                    \"url\": \"{{productImageURL}}\"\r\n                },\r\n            \"stocks\": [\r\n                {\r\n                    \"stock_id\": \"{{stockID}}\",\r\n                    \"code\": \"{{stockCode}}\",\r\n                    \"position\": \"Ř10P20\",\r\n                    \"quantity\": \"10\"\r\n                }\r\n            ],     \r\n            \"prices\": [\r\n                {\r\n                    \"language\": \"{{languageID_CZ}}\",\r\n                    \"pricelists\": [\r\n                        {\r\n                            \"name\": \"{{pricelistName_CZ}}\",\r\n                            \"price_original\": \"100.50\",\r\n                            \"product_discount\": \"99.99\",\r\n                            \"price_sale\": \"90.30\"\r\n                        }\r\n                    ],\r\n                    \"price_purchase\": \"80.45\",\r\n                    \"price_common\": \"120.44\"\r\n                }\r\n            ],\r\n            \"labels\": [{\r\n                \"name\": {\r\n                    \"cz\": \"API Label\"\r\n                },\r\n                \"active_yn\": \"1\",\r\n                \"active_from\": \"2023-1-1\",\r\n                \"active_to\": \"2030-1-1\"\r\n            }],\r\n            \"parameters\": [\r\n                {\r\n                    \"id\": \"42\",\r\n                    \"descriptions\": [\r\n                        {\r\n                            \"language\": \"{{languageID_CZ}}\",\r\n                            \"name\": \"{{parametersName_CZ}}\"\r\n                        }\r\n                    ],\r\n                    \"values\": [\r\n                        {\r\n                            \"id\": \"1372\",\r\n                            \"descriptions\": [\r\n                                {\r\n                                    \"language\": \"{{languageID_CZ}}\",\r\n                                    \"value\": \"Porcelán\"\r\n                                }\r\n                            ]\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/products",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"products\": [\r\n    {\r\n      \"code\": \"P00004\",\r\n      \"active_yn\": \"0\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/products/:ProductCode",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"products",
+								":ProductCode"
+							],
+							"variable": [
+								{
+									"key": "ProductCode",
+									"value": "{{productCode}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Labels",
+			"item": [
+				{
+					"name": "Labels",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"labels\": [\r\n    {\r\n      \"descriptions\": [\r\n        {\r\n          \"language_id\": \"{{languageID_CZ}}\",\r\n          \"name\": \"API label\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/labels",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"labels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Labels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/labels",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"labels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Labels",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/labels?id={{labelsID}}",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"labels"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{labelsID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Availabilities",
+			"item": [
+				{
+					"name": "Availabilities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"availabilities\": [\r\n    {\r\n        \"type\": \"OnRequest\",\r\n        \"stock_from\": null,\r\n        \"dispatch_days\": null,\r\n        \"delivery_days\": null,\r\n        \"color\": \"#dddddd\",        \r\n        \"descriptions\": [\r\n            {\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"name\": \"API availability\"\r\n            }\r\n        ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/availabilities",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"availabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Availabilities",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"availabilities\": [\r\n    {\r\n        \"id\": 2,\r\n        \"stock_from\": null,\r\n        \"dispatch_days\": null,\r\n        \"delivery_days\": null,\r\n        \"color\": \"#dddddd\",\r\n        \"descriptions\": [\r\n            {\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"name\": \"{{productsAvailability_CZ}}\"\r\n            }\r\n      ]\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/availabilities",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"availabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Availabilities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/availabilities",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"availabilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Availabilities",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/availabilities/:id",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"availabilities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manufacturers",
+			"item": [
+				{
+					"name": "Manufacturers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/manufacturers",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"manufacturers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parameters",
+			"item": [
+				{
+					"name": "Parameters",
+					"item": [
+						{
+							"name": "Parameters",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"parameters\": [\r\n    {\r\n      \"descriptions\": [\r\n        {\r\n          \"language\": \"{{languageID_CZ}}\",\r\n          \"name\": \"API Parameter\"\r\n        }\r\n      ],\r\n      \"values\": [\r\n        {\r\n          \"descriptions\": [\r\n            {\r\n              \"language\": \"{{languageID_CZ}}\",\r\n              \"value\": \"API value\"\r\n            }\r\n          ],\r\n          \"position\": 1\r\n        }\r\n      ],\r\n      \"position\": 1,\r\n      \"display_type\": \"select\",\r\n      \"display_in_product_list_yn\": false,\r\n      \"display_in_product_detail_yn\": false\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/parameters",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"parameters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Parameters",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"parameters\": [\r\n    {\r\n      \"id\": 54,\r\n      \"descriptions\": [\r\n        {\r\n          \"language\": \"{{languageID_CZ}}\",\r\n          \"name\": \"{{parametersName_CZ}} 2\"\r\n        }\r\n      ],\r\n      \"values\": [\r\n        {\r\n          \"id\": 1380,\r\n          \"descriptions\": [\r\n            {\r\n              \"language\": \"{{languageID_CZ}}\",\r\n              \"value\": \"Emerald 2\"\r\n            }\r\n          ],\r\n          \"position\": 0\r\n        }\r\n      ],\r\n      \"position\": 1,\r\n      \"display_type\": \"select\",\r\n      \"display_in_product_list_yn\": false,\r\n      \"display_in_product_detail_yn\": false\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/parameters",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"parameters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Parameters",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/parameters",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"parameters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Parameters",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/parameters/:id",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"parameters",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "54"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Parameter values",
+					"item": [
+						{
+							"name": "Parameters values",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/parameters/values?ids=1380",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"parameters",
+										"values"
+									],
+									"query": [
+										{
+											"key": "ids",
+											"value": "1380"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Stocks",
+			"item": [
+				{
+					"name": "Stocks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"stocks\": [{\r\n      \"code\": \"{{stockCode}}\",\r\n      \"active_yn\": \"1\",\r\n      \"street\": \"Street name\",\r\n      \"city\": \"City\",\r\n      \"zip\": \"70200\",\r\n      \"country_id\": \"{{countryID_CZ}}\",\r\n      \"position\": 1,\r\n      \"descriptions\": [{\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"name\": \"Stock Point\",\r\n            \"description\": \"Stock point description\"\r\n      }]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/stocks",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"stocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stocks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"stocks\": [{\r\n      \"id\": \"{{stockID}}\",\r\n      \"code\": \"{{stockCode}}\",\r\n      \"active_yn\": \"1\",\r\n      \"street\": \"Street name Edited\",\r\n      \"city\": \"City\",\r\n      \"zip\": \"70200\",\r\n      \"country_id\": \"{{countryID_CZ}}\",\r\n      \"position\": 1,\r\n      \"descriptions\": [{\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"name\": \"Stock Point Edited\",\r\n            \"active_yn\": \"1\",\r\n            \"description\": \"Stock point description Edited\"\r\n      }]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/stocks",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"stocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/stocks",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"stocks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stocks",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/stocks/:id",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"stocks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{stockID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Categories",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categories\": [{\r\n        \"code\": \"{{categoriesCode}}\",\r\n        \"position\": \"0\",\r\n        \"active_yn\": \"1\",\r\n        \"type\": \"siteWithProducts\",\r\n        \"type_of_items\": \"withoutSubcategories\",\r\n        \"show_in_menu_yn\": \"1\",\r\n        \"descriptions\": [{\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"active_yn\": \"1\",\r\n            \"name\": \"{{categoriesName}}\",\r\n            \"name_h1\": \"{{categoriesName}}\",\r\n            \"description_text\": \"Description text\",\r\n            \"seo_title\": \"{{categoriesName}}\",\r\n            \"seo_description\": \"{{categoriesName}}\",\r\n            \"seo_url\": \"{{categoriesName}}\"\r\n        }],\r\n        \"images\": [{\r\n            \"url\": \"{{categoryImage}}\",\r\n            \"main_yn\": \"1\",\r\n            \"list_yn\": \"1\",\r\n            \"position\": \"0\"\r\n        }]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/categories",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categories",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categories\": [{\r\n        \"code\": \"{{categoriesCode}}\",\r\n        \"position\": \"0\",\r\n        \"active_yn\": \"1\",\r\n        \"type\": \"siteWithProducts\",\r\n        \"type_of_items\": \"withoutSubcategories\",\r\n        \"show_in_menu_yn\": \"1\",\r\n        \"descriptions\": [{\r\n            \"language\": \"{{languageID_CZ}}\",\r\n            \"active_yn\": \"1\",\r\n            \"name\": \"{{categoriesName}}\",\r\n            \"name_h1\": \"{{categoriesName}}\",\r\n            \"description_text\": \"Description text\",\r\n            \"seo_title\": \"{{categoriesName}}\",\r\n            \"seo_description\": \"{{categoriesName}}\",\r\n            \"seo_url\": \"{{categoriesName}}\"\r\n        }],\r\n        \"images\": [{\r\n            \"url\": \"{{categoryImage}}\",\r\n            \"main_yn\": \"1\",\r\n            \"list_yn\": \"1\",\r\n            \"position\": \"0\"\r\n        }]\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/categories",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/categories",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categories",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/categories?id={{categoryID}}",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{categoryID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "Customers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customers\":  [\r\n    {\r\n        \"type\": \"customer\",\r\n        \"degree\": \"ing.\",\r\n        \"firstname\": \"{{customerName}}\",\r\n        \"surname\": \"{{customerSurname}}\",\r\n        \"code\": \"1234\",\r\n        \"language\": \"{{languageID_CZ}}\",\r\n        \"newsletter_accept\": \"yes\",\r\n        \"pricelist\": \"{{pricelistName_CZ}}\",\r\n        \"base_turnover\": \"100000\",\r\n        \"note\": \"note\",\r\n        \"company\": {\r\n            \"name\": \"{{customerCompanyName}}\",\r\n            \"company_number\": \"{{customerCompanyNumber}}\",\r\n            \"vat_number\": \"{{customerCompanyVatNumber}}\",\r\n            \"vat_payer_yn\": \"{{customerCompanyVatPayer}}\"\r\n        },\r\n        \"communication\": {\r\n            \"phone\": \"731731731\",\r\n            \"fax\": \"731731731\",\r\n            \"im\": \"Instant messaging\",\r\n            \"salutation\": \"Mr.\",\r\n            \"declension\": \"declension\"\r\n        },\r\n        \"login\": {\r\n            \"active_yn\": \"1\",\r\n            \"blocked_yn\": \"0\",\r\n            \"email\": \"{{customerEmail}}\",\r\n            \"password\": \"{{customerPassword}}\"\r\n        },\r\n        \"groups\": [{\r\n            \"id\": \"{{customerGroupsID}}\"\r\n        }],\r\n        \"addresses\": {\r\n            \"billing\": {\r\n                \"street\": \"{{customerBillingStreet}}\",\r\n                \"city\": \"{{customerBillingCity}}\",\r\n                \"state\": \"{{customerBillingState}}\",\r\n                \"zip_code\": \"{{customerBillingZipCode}}\",\r\n                \"country_id\": \"{{customerBillingCountryID}}\"\r\n            },\r\n            \"postal\": [{\r\n                \"street\": \"{{customerPostalStreet}}\",\r\n                \"city\": \"{{customerPostalCity}}\",\r\n                \"state\": \"{{customerPostalState}}\",\r\n                \"zip_code\": \"{{customerPostalZipCode}}\",\r\n                \"country_id\": \"{{customerPostalCountryID}}\"\r\n            }]\r\n        }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/customers",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Customers",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"customers\":  [\r\n    {\r\n        \"type\": \"customer\",\r\n        \"degree\": \"ing.\",\r\n        \"firstname\": \"{{customerName}}\",\r\n        \"surname\": \"{{customerSurname}}\",\r\n        \"code\": \"1234\",\r\n        \"language\": \"{{languageID_CZ}}\",\r\n        \"newsletter_accept\": \"yes\",\r\n        \"pricelist\": \"{{pricelistName_CZ}}\",\r\n        \"base_turnover\": \"100000\",\r\n        \"note\": \"note\",\r\n        \"company\": {\r\n            \"name\": \"{{customerCompanyName}}\",\r\n            \"company_number\": \"{{customerCompanyNumber}}\",\r\n            \"vat_number\": \"{{customerCompanyVatNumber}}\",\r\n            \"vat_payer_yn\": \"{{customerCompanyVatPayer}}\"\r\n        },\r\n        \"communication\": {\r\n            \"phone\": \"731731731\",\r\n            \"fax\": \"731731731\",\r\n            \"im\": \"Instant messaging\",\r\n            \"salutation\": \"Mr.\",\r\n            \"declension\": \"declension\"\r\n        },\r\n        \"login\": {\r\n            \"active_yn\": \"1\",\r\n            \"blocked_yn\": \"0\",\r\n            \"email\": \"{{customerEmail}}\",\r\n            \"password\": \"123456\"\r\n        },\r\n        \"groups\": [{\r\n            \"id\": \"{{customerGroups}}\"\r\n        }],\r\n        \"addresses\": {\r\n            \"billing\": {\r\n                \"street\": \"{{customerBillingStreet}}\",\r\n                \"city\": \"{{customerBillingCity}}\",\r\n                \"state\": \"{{customerBillingState}}\",\r\n                \"zip_code\": \"{{customerBillingZipCode}}\",\r\n                \"country_id\": \"{{customerBillingCountryID}}\"\r\n            },\r\n            \"postal\": [{\r\n                \"street\": \"{{customerPostalStreet}}\",\r\n                \"city\": \"{{customerPostalCity}}\",\r\n                \"state\": \"{{customerPostalState}}\",\r\n                \"zip_code\": \"{{customerPostalZipCode}}\",\r\n                \"country_id\": \"{{customerPostalCountryID}}\"\r\n            }]\r\n        }\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/customers",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Customers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/customers",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Customers",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/customers?id={{customerID}}",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"customers"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "{{customerID}}",
+											"description": "Customer ID"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Agreements",
+					"item": [
+						{
+							"name": "Customers - agreements",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/customers/{{customerID}}/agreements",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"customers",
+										"{{customerID}}",
+										"agreements"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Customers - login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"email\": \"{{customerEmail}}\",\r\n        \"password\": \"{{customerPassword}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/customers/login",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"customers",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Groups",
+					"item": [
+						{
+							"name": "Groups",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"groups\": [{\r\n        \"name\": \"Customers Group Name\"\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/groups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Groups",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"groups\": [{\r\n        \"id\": \"{{customerGroupsID}}\",\r\n        \"name\": \"Customers Group Name Edited\"\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/groups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/groups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Groups",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/groups?id={{customerGroupsID}}",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"groups"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "{{customerGroupsID}}",
+											"description": "Customer ID"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Carts",
+			"item": [
+				{
+					"name": "Carts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/carts/",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"carts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Redirect",
+			"item": [
+				{
+					"name": "Redirect",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"redirections\":  [{\r\n        \"old\": \"{{project_URL}}/oldpage\",\r\n        \"new\": \"{{project_URL}}/newpage\",\r\n        \"code\": \"301\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/redirections",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"redirections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redirect",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/redirections",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"redirections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redirect",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/redirections?ids={{redirectionsID}}",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"redirections"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "{{redirectionsID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vouchers",
+			"item": [
+				{
+					"name": "Vouchers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"count\": \"1000\",\r\n    \"active_yn\": \"1\",\r\n    \"global_yn\": \"0\",\r\n    \"for_products_in_action_yn\": \"0\",\r\n    \"date_from\": \"2023-1-1\",\r\n    \"date_to\": \"\",\r\n    \"type\": \"price\",\r\n    \"currency_id\": \"CZK\",\r\n    \"amount\": \"50\",\r\n    \"used_from\": \"0\",\r\n    \"note\": \"Voucher note\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/vouchers",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"vouchers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vouchers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/vouchers",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"vouchers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vouchers",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/Vouchers/:voucher_code",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"Vouchers",
+								":voucher_code"
+							],
+							"variable": [
+								{
+									"key": "voucher_code",
+									"value": "{{voucher_code}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "News",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/news",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Articles",
+			"item": [
+				{
+					"name": "Articles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/articles",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Advisor",
+			"item": [
+				{
+					"name": "Advisor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/advisor",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"advisor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Files",
+					"item": [
+						{
+							"name": "Files",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"files\": [\r\n    {\r\n      \"url\": \"https://files.upgates.com/graphics/logos/upgates/png/upgates-logo.png\",\r\n      \"category_id\": \"1\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/files",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Files (form-data)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1efdfd98-1121-4d40-82d1-39664913e21c"
+										},
+										{
+											"key": "file_name",
+											"value": "File name",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/files/file",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"files",
+										"file"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Files",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/files",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Files",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/files/:id",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"files",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{filesID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Files category",
+					"item": [
+						{
+							"name": "Files - Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/files/categories",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"files",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shipment",
+			"item": [
+				{
+					"name": "Shipments",
+					"item": [
+						{
+							"name": "Shipments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/shipments",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"shipments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shipments points",
+					"item": [
+						{
+							"name": "Shipments - affiliates",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"affiliates\": [\r\n    {\r\n    \"affiliate_id\": \"{{shipmentsAffiliateID}}\",\r\n    \"name\": \"Custom Point\",\r\n    \"street\": \"Street\",\r\n    \"city\": \"City\",\r\n    \"zip\": \"70200\",\r\n    \"country\": \"cz\",\r\n    \"note\": \"Note\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/shipments/:id/affiliates",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"shipments",
+										":id",
+										"affiliates"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{shipmentsID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shipments - affiliates",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/shipments/:id/affiliates",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"shipments",
+										":id",
+										"affiliates"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{shipmentsID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shipments - affiliates",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/shipments/:id/affiliates?affiliate_ids={{shipmentsAffiliateID}}",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"shipments",
+										":id",
+										"affiliates"
+									],
+									"query": [
+										{
+											"key": "affiliate_ids",
+											"value": "{{shipmentsAffiliateID}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{shipmentsID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Groups",
+					"item": [
+						{
+							"name": "Groups",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/shipments/groups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"shipments",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/payments",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conversion-codes",
+			"item": [
+				{
+					"name": "Conversion-codes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"conversion_codes\": [\r\n    {\r\n      \"position\": \"{{conversionCodesPosition}}\",\r\n      \"language_id\": \"{{languageID_CZ}}\",\r\n      \"code\": \"<script>console.log('test')</script>\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/conversion-codes",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"conversion-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conversion-codes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/conversion-codes",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"conversion-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conversion-codes",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"conversion_codes\": [\r\n    {\r\n      \"position\": \"{{conversionCodesPosition}}\",\r\n      \"language_id\": \"{{languageID_CZ}}\",\r\n      \"code\": \"<script>console.log('test2')</script>\"\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/conversion-codes",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"conversion-codes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conversion-codes",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/conversion-codes/{{conversionCodesPosition}}?language_id={{languageID_CZ}}",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"conversion-codes",
+								"{{conversionCodesPosition}}"
+							],
+							"query": [
+								{
+									"key": "language_id",
+									"value": "{{languageID_CZ}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Webhooks",
+			"item": [
+				{
+					"name": "Invoices",
+					"item": [
+						{
+							"name": "Invoices.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Invoices}}\",\r\n    \"event\": \"Invoices.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invoices.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Invoices}}\",\r\n    \"event\": \"Invoices.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invoices.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Invoices}}\",\r\n    \"event\": \"Invoices.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Orders.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Orders}}\",\r\n    \"event\": \"Orders.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Orders}}\",\r\n    \"event\": \"Orders.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Orders.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Orders}}\",\r\n    \"event\": \"Orders.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order statuses",
+					"item": [
+						{
+							"name": "OrderStatuses.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_OrdersStatuses}}\",\r\n    \"event\": \"OrderStatuses.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OrderStatuses.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_OrdersStatuses}}\",\r\n    \"event\": \"OrderStatuses.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "OrderStatuses.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_OrdersStatuses}}\",\r\n    \"event\": \"OrderStatuses.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Products.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Products}}\",\r\n    \"event\": \"Products.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_OrdersStatuses}}\",\r\n    \"event\": \"Products.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Products.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_OrdersStatuses}}\",\r\n    \"event\": \"Products.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Labels",
+					"item": [
+						{
+							"name": "Labels.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Labels}}\",\r\n    \"event\": \"Labels.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Labels.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Labels}}\",\r\n    \"event\": \"Labels.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Labels.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Labels}}\",\r\n    \"event\": \"Labels.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "Categories.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Categories}}\",\r\n    \"event\": \"Categories.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Categories}}\",\r\n    \"event\": \"Categories.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Categories}}\",\r\n    \"event\": \"Categories.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customers",
+					"item": [
+						{
+							"name": "Customers.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Customers}}\",\r\n    \"event\": \"Customers.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Customers.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Customers}}\",\r\n    \"event\": \"Customers.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Customers.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Customers}}\",\r\n    \"event\": \"Customers.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shipments",
+					"item": [
+						{
+							"name": "Shipments.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Shipments}}\",\r\n    \"event\": \"Shipments.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shipments.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Shipments}}\",\r\n    \"event\": \"Shipments.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shipments.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Shipments}}\",\r\n    \"event\": \"Shipments.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payments",
+					"item": [
+						{
+							"name": "Payments.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Payments}}\",\r\n    \"event\": \"Payments.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payments.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Payments}}\",\r\n    \"event\": \"Payments.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payments.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Payments}}\",\r\n    \"event\": \"Payments.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pricelists",
+					"item": [
+						{
+							"name": "Pricelists.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Pricelists}}\",\r\n    \"event\": \"Pricelists.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pricelists.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Pricelists}}\",\r\n    \"event\": \"Pricelists.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pricelists.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Pricelists}}\",\r\n    \"event\": \"Pricelists.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Languages",
+					"item": [
+						{
+							"name": "Languages.create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Languages}}\",\r\n    \"event\": \"Languages.create\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Languages.update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Languages}}\",\r\n    \"event\": \"Languages.update\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Languages.delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Languages}}\",\r\n    \"event\": \"Languages.delete\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/webhooks",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"webhooks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Webhooks - events",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{PostmanName}}\",\r\n    \"url\": \"{{webhooksURL_Orders}}\",\r\n    \"event\": \"Orders.delete\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/webhooks/events",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"webhooks",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://webhook.site/#!/view/b9471801-2436-48a3-9738-5f7cf3aa2f9c](https://webhook.site/#!/view/b9471801-2436-48a3-9738-5f7cf3aa2f9c)"
+		},
+		{
+			"name": "Eshop settings",
+			"item": [
+				{
+					"name": "Config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/config",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"config"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pricelists",
+			"item": [
+				{
+					"name": "Pricelist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pricelists\": [\r\n        {\r\n            \"name\": \"API Pricelist Name\",\r\n            \"percent\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/pricelists",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"pricelists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pricelist",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/pricelists",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"pricelists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pricelist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/pricelists/:id",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"pricelists",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{pricelistID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Languages",
+			"item": [
+				{
+					"name": "Languages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/languages",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"languages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Owner",
+			"item": [
+				{
+					"name": "Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/owner",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"owner"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API status",
+			"item": [
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/status",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Graphics",
+			"item": [
+				{
+					"name": "Code editor",
+					"item": [
+						{
+							"name": "File / Directory",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pathname\": \"/templates/NewFile.phtml\",\r\n    \"type\": \"file\",\r\n    \"content\": \"File content\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/code",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"code"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "File",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pathname\": \"/templates/NewFile.phtml\",\r\n    \"type\": \"file\",\r\n    \"content\": \"File new content\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/code",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"code"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Directory list",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/code",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"code"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "File content",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/code?pathname={{graphicsPath}}",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"code"
+									],
+									"query": [
+										{
+											"key": "pathname",
+											"value": "{{graphicsPath}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "File / Directory",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"pathname\": \"/templates/NewFile.phtml\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/code",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"code"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Backups",
+					"item": [
+						{
+							"name": "Backups",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"NewBackups\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/backups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"backups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore backup",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"{{graphicsBackupToken}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/backups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"backups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Backups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/backups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"backups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Backup",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\": \"{{graphicsBackupToken}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiProject_URL}}/graphics/backups",
+									"host": [
+										"{{apiProject_URL}}"
+									],
+									"path": [
+										"graphics",
+										"backups"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Metas",
+			"item": [
+				{
+					"name": "Metas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"metas\": [\r\n        {\r\n            \"category\": \"{{MetasCategory}}\",\r\n            \"type\": \"{{MetasCategoryType}}\",\r\n            \"key\": \"customkey\",\r\n            \"label\": \"Internal name\",\r\n            \"active\": \"1\",\r\n            \"active_from\": \"2023-01-01\",\r\n            \"active_to\": \"2100-01-01\",\r\n            \"help\": \"Internal description\",\r\n            \"common_languages_value_yn\": \"false\",\r\n            \"searchable_yn\": \"true\",\r\n            \"searchable_value_for_bool\": \"customkey\",\r\n            \"values\": [\r\n                {\r\n                    \"language\": \"{{languageID_CZ}}\",\r\n                    \"items\": [\r\n                        \"Value 1\",\r\n                        \"Value 2\",\r\n                        \"Default Value\"\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiProject_URL}}/metas",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"metas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Metas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/metas",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"metas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Metas",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiProject_URL}}/metas/{{MetasID}}",
+							"host": [
+								"{{apiProject_URL}}"
+							],
+							"path": [
+								"metas",
+								"{{MetasID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{apiUser_Key}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{apiUser_Login}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUser_Login",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "apiUser_Key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "apiProject_URL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "project_URL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "languageID_CZ",
+			"value": "cs",
+			"type": "default"
+		},
+		{
+			"key": "languageID_SK",
+			"value": "sk",
+			"type": "string"
+		},
+		{
+			"key": "orderNumber",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "orderNumber_External",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "orderVariableSymbol",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "orderStatusID_Canceled",
+			"value": "2",
+			"type": "string"
+		},
+		{
+			"key": "orderStatusID_Received",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "orderStatus_CZ_Received",
+			"value": "Přijatá",
+			"type": "default"
+		},
+		{
+			"key": "orderStatus_SK_Received",
+			"value": "Prijatá",
+			"type": "string"
+		},
+		{
+			"key": "orderFilesID",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "orderInvoiceNumber",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "Vat_CZ",
+			"value": "21",
+			"type": "default"
+		},
+		{
+			"key": "Vat_SK",
+			"value": "23",
+			"type": "string"
+		},
+		{
+			"key": "productCode",
+			"value": "API_TEST",
+			"type": "default"
+		},
+		{
+			"key": "productName",
+			"value": "API Product",
+			"type": "default"
+		},
+		{
+			"key": "productImageURL",
+			"value": "https://files.upgates.com/graphics/logos/upgates/png/upgates-logo-vertical.png",
+			"type": "default"
+		},
+		{
+			"key": "productImageURL_2",
+			"value": "https://files.upgates.com/graphics/logos/upgates/png/upgates-logo-vertical-inverted.png",
+			"type": "default"
+		},
+		{
+			"key": "productShipmentGroup",
+			"value": "Individuální doprava",
+			"type": "default"
+		},
+		{
+			"key": "productsAvailability_CZ",
+			"value": "Skladem",
+			"type": "default"
+		},
+		{
+			"key": "productsAvailability_SK",
+			"value": "Skladom",
+			"type": "default"
+		},
+		{
+			"key": "categoryID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "categoryCode",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "pricelistName_CZ",
+			"value": "Výchozí",
+			"type": "default"
+		},
+		{
+			"key": "pricelistName_SK",
+			"value": "Predvolené",
+			"type": "default"
+		},
+		{
+			"key": "parametersName_CZ",
+			"value": "Barva",
+			"type": "default"
+		},
+		{
+			"key": "parametersName_SK",
+			"value": "Farba",
+			"type": "default"
+		},
+		{
+			"key": "producRatingsReviewsID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "labelsID",
+			"value": "1",
+			"type": "default"
+		},
+		{
+			"key": "categoriesCode",
+			"value": "API_CATEGORY_TEST",
+			"type": "default"
+		},
+		{
+			"key": "categoriesName",
+			"value": "Category Name",
+			"type": "default"
+		},
+		{
+			"key": "categoryImage",
+			"value": "https://files.upgates.com/graphics/logos/upgates/png/upgates-logo-vertical.png",
+			"type": "default"
+		},
+		{
+			"key": "customerGroupsID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "customerEmail",
+			"value": "test@example.com",
+			"type": "default"
+		},
+		{
+			"key": "customerBillingStreet",
+			"value": "28. Října 2",
+			"type": "default"
+		},
+		{
+			"key": "customerBillingCity",
+			"value": "Ostrava",
+			"type": "default"
+		},
+		{
+			"key": "customerBillingZipCode",
+			"value": "70200",
+			"type": "default"
+		},
+		{
+			"key": "customerBillingCountryID",
+			"value": "cz",
+			"type": "default"
+		},
+		{
+			"key": "customerName",
+			"value": "Adam",
+			"type": "default"
+		},
+		{
+			"key": "customerSurname",
+			"value": "Novák",
+			"type": "default"
+		},
+		{
+			"key": "customerPostalStreet",
+			"value": "28. Října 3",
+			"type": "default"
+		},
+		{
+			"key": "customerPostalCity",
+			"value": "Ostrava",
+			"type": "default"
+		},
+		{
+			"key": "customerPostalState",
+			"value": "70200",
+			"type": "default"
+		},
+		{
+			"key": "customerPostalCountryID",
+			"value": "cz",
+			"type": "default"
+		},
+		{
+			"key": "customerPostalZipCode",
+			"value": "70200",
+			"type": "default"
+		},
+		{
+			"key": "customerBillingState",
+			"value": "Česká republika",
+			"type": "default"
+		},
+		{
+			"key": "customerCompanyName",
+			"value": "Company Name",
+			"type": "default"
+		},
+		{
+			"key": "customerCompanyNumber",
+			"value": "123456789",
+			"type": "default"
+		},
+		{
+			"key": "customerCompanyVatNumber",
+			"value": "CZ123456789",
+			"type": "default"
+		},
+		{
+			"key": "customerCompanyVatPayer",
+			"value": "1",
+			"type": "default"
+		},
+		{
+			"key": "customerID",
+			"value": "1",
+			"type": "default"
+		},
+		{
+			"key": "customerPassword",
+			"value": "123456",
+			"type": "default"
+		},
+		{
+			"key": "redirectionsID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "voucher_code",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "filesID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "shipmentsID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "shipmentsAffiliateID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "PostmanName",
+			"value": "Postman Webhooks",
+			"type": "default"
+		},
+		{
+			"key": "conversionCodesPosition",
+			"value": "head",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Invoices",
+			"value": "https://webhook.site/608c5e6e-5d14-41fe-8d6b-9b79ff0ceb84",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Orders",
+			"value": "https://webhook.site/d78678c2-0df7-4a9e-b649-89e3d5fffa06",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_OrdersStatuses",
+			"value": "https://webhook.site/5158a5b6-946a-44b7-8976-764bd4700beb",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Products",
+			"value": "https://webhook.site/79dee2c6-7f68-465e-91e7-ad5f7e5f8a97",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Labels",
+			"value": "https://webhook.site/4d7a0abd-f134-4615-ae8f-d183289ca1ae",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Categories",
+			"value": "https://webhook.site/1d1d3e0b-35d8-43cb-9d15-4e869438b3e0",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Customers",
+			"value": "https://webhook.site/49320b4d-a1a3-4cd7-8e5a-eb68979de7c5",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Shipments",
+			"value": "https://webhook.site/2768c1a8-e542-46c2-9e34-662363b4b0b1",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Payments",
+			"value": "https://webhook.site/af4bd5c2-9804-45d2-9940-ad5e34af6dec",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Pricelists",
+			"value": "https://webhook.site/a5bada4f-a98e-4795-b09a-7acc760e65b3",
+			"type": "default"
+		},
+		{
+			"key": "webhooksURL_Languages",
+			"value": "https://webhook.site/85df197c-6dc3-4fb3-abe3-46b1ad966737",
+			"type": "default"
+		},
+		{
+			"key": "pricelistID",
+			"value": "1",
+			"type": "default"
+		},
+		{
+			"key": "graphicsPath",
+			"value": "/styles",
+			"type": "default"
+		},
+		{
+			"key": "stockCode",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "countryID_CZ",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "countryID_SK",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "stockID",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "MetasCategory",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "MetasCategoryType",
+			"value": "radiolist",
+			"type": "default"
+		},
+		{
+			"key": "parametersValue_CZ",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "parametersValue_SK",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
